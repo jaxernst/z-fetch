@@ -21,7 +21,8 @@ const store = create(
         })
 
         try {
-          res = await fetchSomeData()
+          res = await fetchSomeData(params)
+
           if (!res.ok) throw
 
           set((state) => {
@@ -63,4 +64,3 @@ const store = create(
   })
 )
 ```
-        
