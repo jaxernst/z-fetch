@@ -5,7 +5,7 @@ A lightweight no-dependency library for managing async state in Zustand stores. 
 <hr />
 
 ### Why zFetch?
-A common pattern for fetching with Zustand stores involves manually setting loading states for the api consumer. This results in verbose and error-prone code that only grows in complexity from here:
+A common pattern for async fetching with Zustand stores involves manually setting loading states for the api consumer. This results in verbose and error-prone code that only grows in complexity as your application matures:
 
 ```typescript
 const store = create(
