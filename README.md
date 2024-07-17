@@ -1,6 +1,6 @@
 # zFetch - Zustand async state management
 
-A lightweight library for managing async state in Zustand stores. zFetch manages fetch loading states, error states, retry logic, request deduplication, and more. 
+A lightweight no-dependency library for managing async state in Zustand stores. zFetch manages fetch loading states, error states, retry logic, request deduplication, and more. 
 
 A common pattern for fetching with Zustand stores involves manually setting loading states for the api consumer. This results in verbose and error-prone code that only grows in complexity from here:
 
