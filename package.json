@@ -1,15 +1,39 @@
 {
   "name": "z-fetch",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.1.0",
+  "description": "Lightweight async state management for Zustand stores",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "test": "vitest",
+    "lint": "eslint src",
+    "format": "prettier --write src",
+    "prepublishOnly": "npm run build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "zustand",
+    "react",
+    "state-management",
+    "async",
+    "fetch"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "peerDependencies": {
+    "zustand": "^4.0.0"
+  },
   "devDependencies": {
-    "zustand": "^4.5.4"
+    "zustand": "^4.5.4",
+    "typescript": "^5.0.0",
+    "tsup": "^8.0.0",
+    "vitest": "^1.0.0",
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0",
+    "@types/node": "^20.0.0"
   }
 }
