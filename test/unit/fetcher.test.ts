@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { create } from "zustand";
-import { zFetch, fetcherStore, type FetchedData } from "../src";
+import { zFetch, fetcherStore, type FetchedData } from "../../src";
 
 interface TestUser {
   id: number;

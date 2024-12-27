@@ -1,5 +1,4 @@
-import type { FetchedData, FetchedRecord, FetchOptions } from ".";
-import type { Key } from "./typeUtil";
+import type { FetchedData, FetchedRecord, FetchOptions, Key } from "../types";
 
 export function makePathUpdater<State extends object>(
   set: (updater: (state: State) => State) => void

@@ -1,17 +1,17 @@
-import { fetcherStore, type FetchedRecord, type FetchOptions } from ".";
+import { fetcherStore, type FetchedRecord, type FetchOptions } from "..";
 
 import type {
   Key,
   PathRecordValue,
   RecordFetcherObjectPath,
   Reducer,
-} from "./typeUtil";
+} from "../typeUtil";
 
 import {
   getAtPath,
   makeRecordPathUpdater,
   shouldFetch as _shouldFetch,
-} from "./util";
+} from "../util";
 
 export type RecordFetcherAction<
   State extends object,

@@ -1,10 +1,10 @@
-import type { FetchedData, FetchOptions } from ".";
-import type { DeepIndex, FetcherObjectPath, Reducer } from "./typeUtil";
+import type { FetchedData, FetchOptions } from "../types";
+import type { DeepIndex, FetcherObjectPath, Reducer } from "../types/util";
 import {
   getAtPath,
   makePathUpdater,
   shouldFetch as _shouldFetch,
-} from "./util";
+} from "../core/util";
 
 export type FetcherAction<
   StoreSchema extends object,

@@ -1,15 +1,16 @@
-import { fetcher as _fetcher, type FetcherAction } from "./fetcher";
+import { fetcher as _fetcher, type FetcherAction } from "./fetchers/fetcher";
 import {
   recordFetcher as _recordFetcher,
   type RecordFetcherAction,
-} from "./recordFetcher";
+} from "./fetchers/recordFetcher";
+import { FetchedData, FetchedRecord, LoadingState } from "./types";
 import type {
   FetcherObjectPath,
   DeepIndex,
   RecordFetcherObjectPath,
   PathRecordValue,
   Key,
-} from "./typeUtil";
+} from "./types/util";
 
 /**
  * Fetch Utility for zustand + immer stores
@@ -25,21 +26,6 @@ import type {
  *  - To rename 'FetchedData' to 'FetcherStore' for consistancy
  *  - To rename 'FetchedRecord' to 'FetcherRecord' for consistancy
  */
-
-export type LoadingState = "none" | "loading" | "loaded" | "error";
-
-export interface FetchedData<T> {
-  data: T | undefined;
-  loadingState: LoadingState;
-}
-
-export type FetchedRecord<K extends Key, T> = Record<K, FetchedData<T>>;
-
-export interface FetchOptions {
-  force?: boolean;
-  noRefetch?: boolean;
-  errorOnEmptyResult?: boolean;
-}
 
 const initialLoadingState: LoadingState = "none";
 
@@ -101,3 +87,4 @@ export function zFetch<State extends object>(
     ) => _recordFetcher(set, get, action),
   };
 }
+export { FetchedData };
