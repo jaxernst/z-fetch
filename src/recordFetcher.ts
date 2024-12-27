@@ -19,7 +19,7 @@ export type RecordFetcherAction<
   Path extends string & RecordFetcherObjectPath<State>,
   TRecord extends PathRecordValue<State, Path>,
   TFetchResult,
-  AssertFetchResult
+  AssertFetchResult,
 > = (...args: ActionArgs) => {
   key: TRecord["key"];
   path: Path;
@@ -43,7 +43,7 @@ export function recordFetcher<
   Path extends string & RecordFetcherObjectPath<State>,
   TRecord extends PathRecordValue<State, Path>,
   TFetchResult,
-  AssertFetchResult
+  AssertFetchResult,
 >(
   set: (updater: (state: State) => State) => void,
   get: () => State,

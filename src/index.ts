@@ -70,7 +70,7 @@ export function zFetch<State extends object>(
       Path extends string & FetcherObjectPath<State>,
       TFetchStored extends DeepIndex<State, Path>["data"],
       TFetchResult,
-      AssertFetchResult
+      AssertFetchResult,
     >(
       action: FetcherAction<
         State,
@@ -88,7 +88,7 @@ export function zFetch<State extends object>(
       Path extends string & RecordFetcherObjectPath<State>,
       TFetchStored extends PathRecordValue<State, Path>,
       TFetchResult,
-      AssertFetchResult
+      AssertFetchResult,
     >(
       action: RecordFetcherAction<
         State,
