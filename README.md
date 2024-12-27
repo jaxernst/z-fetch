@@ -116,3 +116,39 @@ Creates an initial store state for fetchable data.
 ## License
 
 MIT © Jackson Ernst
+
+## Roadmap
+
+### 1.0 Release
+
+- [ ] Core Functionality
+  - [ ] Comprehensive test coverage
+  - [ ] Proper TypeScript types and inference
+  - [ ] Basic error handling
+  - [ ] Request deduplication
+  - [ ] Simple caching strategy
+
+### Basic Features
+
+- [ ] Loading States
+  - [ ] Initial loading
+  - [ ] Refresh loading
+  - [ ] Error states
+- [ ] Data Management
+  - [ ] Cache invalidation
+  - [ ] Automatic revalidation
+  - [ ] Optimistic updates
+- [ ] Error Handling
+
+  - [ ] Retry logic
+  - [ ] Error boundaries
+  - [ ] Timeout handling
+
+- [ ] Developer Experience
+  - [ ] Complete documentation
+  - [ ] Usage examples
+  - [ ] Type-safe APIs
+
+## Contributing
+
+We welcome contributions! Please see our contributing guidelines for details.
