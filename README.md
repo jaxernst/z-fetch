@@ -5,6 +5,7 @@ A lightweight, type-safe library for managing async state in Zustand stores. Sim
 ## Why zFetch?
 
 Managing async state in React applications often involves handling multiple states:
+
 - Loading states
 - Error states
 - Data caching
@@ -50,17 +51,16 @@ fetch: () => fetch(/api/users/${id}).then(r => r.json())
 
 ```typescript
 function UserProfile({ id }: { id: number }) {
-const { user, fetchUser } = useStore()
-useEffect(() => {
-fetchUser(id)
-}, [id])
-if (user.loadingState === 'loading') return <div>Loading...</div>
-if (user.loadingState === 'error') return <div>Error loading user</div>
-if (!user.data) return null
-return <div>Hello, {user.data.name}!</div>
+  const { user, fetchUser } = useStore();
+  useEffect(() => {
+    fetchUser(id);
+  }, [id]);
+  if (user.loadingState === "loading") return <div>Loading...</div>;
+  if (user.loadingState === "error") return <div>Error loading user</div>;
+  if (!user.data) return null;
+  return <div>Hello, {user.data.name}!</div>;
 }
 ```
-
 
 ## Advanced Features
 
@@ -96,7 +96,6 @@ lastUpdated: Date.now()
 })
 }))
 ```
-
 
 ## API Reference
 
