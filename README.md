@@ -13,34 +13,33 @@ const store = create(
       result: { isLoading: false, isError: false, data: null },
 
       fetchResult: async () => {
-        if (get().isLoading) return
+        if (get().isLoading) return;
 
         set((state) => {
-          result.isLoading = true
-        })
+          result.isLoading = true;
+        });
 
         try {
-          res = await fetchSomeData(params)
+          res = await fetchSomeData(params);
 
-          if (!res.ok) throw
+          if (!res.ok) throw ;
 
           set((state) => {
-            state.result = res
-          })
+            state.result = res;
+          });
         } catch {
           set((state) => {
-            state.isError = true
-          })
+            state.isError = true;
+          });
         } finally {
           set((state) => {
-            state.isLoading = true
-          })
+            state.isLoading = true;
+          });
         }
       },
-    }
+    };
   })
-)
-
+);
 ```
 
 zFetch provides a light and type-safe extension to the Zustand api to manage these basic states, and provide additional async state management helpers:
@@ -67,7 +66,6 @@ const store = create(
 )
 ```
 
-
 ## Advanced Features
 
 ### Record Fetching
@@ -91,24 +89,33 @@ const useStore = create((set, get) => {
 
 ### Custom Reducers
 
-Transform fetch results before storing. Values returned from the 'fetch' call will be passed to the reducer to be transformed into the expected type at 'path':
+Transform fetch results and combine them with existing state. Useful for aggregating and/or transforming data.
 
 ```typescript
-fetchUser: fetcher((uid: number) => ({
-  path: 'user.totalLikes',
-  fetch: () => fetch(/api/likes/${uid}).then(r => r.json()),
-  reduce: (_prevData, newData) => ({
-    ...newData,
-    lastUpdated: Date.now()
-  })
-}))
+// Use zFetch to fetch from a paginated api while managing page state
+const useStore = create((set, get) => {
+  const { fetcher } = zFetch(set, get);
+  return {
+    posts: fetcherState<{ items: Post[]; nextPage?: string }>(),
+
+    fetchPosts: fetcher((page: string = "0") => ({
+      path: "posts",
+      errorOnEmptyResult: true,
+      query: () => fetch(`/api/posts?page=${page}`).then((r) => r.json()),
+      reduce: (prevState, newPosts) => ({
+        items: (prevState?.items ?? []).concat(newPosts.items),
+        nextPage: newPosts.nextPage,
+      }),
+    })),
+  };
+});
 ```
 
-## API Reference
+## API Reference (Incomplete)
 
 ### `FetchOptions`
 
-Fetch options can be applied when creating a fetcher(), but can be overwritten on individual 'fetch' calls.
+Fetch options can be applied when creating a fetcher(), but can be overwritten on individual 'fetch' calls used outside of the store.
 
 - `force?: boolean` - Force refetch even if data exists
 - `noRefetch?: boolean` - Prevent refetching if data exists
@@ -118,37 +125,29 @@ Fetch options can be applied when creating a fetcher(), but can be overwritten o
 
 MIT © Jackson Ernst
 
-## Roadmap
-
-### 1.0 Release
+## Planned features for a 1.0 release
 
 - [ ] Core Functionality
   - [ ] Comprehensive test coverage
-  - [ ] Proper TypeScript types and inference
-  - [ ] Basic error handling
-  - [ ] Request deduplication
-  - [ ] Simple caching strategy
-
-### Basic Features
-
+  - [x] Proper TypeScript types and inference
+  - [ ] Basic built-in error handling
+  - [x] Request deduplication
+  - [x] Simple caching strategy
 - [ ] Loading States
-  - [ ] Initial loading
-  - [ ] Refresh loading
+  - [x] Initial loading
+  - [x] Refresh loading
   - [ ] Error states
+- [ ] Retry logic
+  - [ ] Exponential backoff
+  - [ ] Custom retry logic
 - [ ] Data Management
   - [ ] Cache invalidation
   - [ ] Automatic revalidation
   - [ ] Optimistic updates
 - [ ] Error Handling
-
   - [ ] Retry logic
   - [ ] Error boundaries
   - [ ] Timeout handling
-
-- [ ] Developer Experience
-  - [ ] Complete documentation
-  - [ ] Usage examples
-  - [ ] Type-safe APIs
 
 ## Contributing
 
