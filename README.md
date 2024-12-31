@@ -121,10 +121,6 @@ Fetch options can be applied when creating a fetcher(), but can be overwritten o
 - `noRefetch?: boolean` - Prevent refetching if data exists
 - `errorOnEmptyResult?: boolean` - Treat empty results as errors
 
-## License
-
-MIT © Jackson Ernst
-
 ## Planned features for a 1.0 release
 
 - [ ] Core Functionality
@@ -149,6 +145,6 @@ MIT © Jackson Ernst
   - [ ] Error boundaries
   - [ ] Timeout handling
 
-## Contributing
+## License
 
-We welcome contributions! Please see our contributing guidelines for details.
+MIT © Jackson Ernst
