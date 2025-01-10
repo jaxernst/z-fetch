@@ -6,6 +6,7 @@ A lightweight, type-safe library for managing async state in Zustand stores. Sim
 
 Managing async state in React and other frontend frameworks typically requires duplicative code that is error-prone and grows in complexity as the fetching needs of your app change over time. Zustand is almost a great solution for fetching application state, but inevitably requires loading states, error states, and more advanced logic to be handled:
 
+(before zFetch)
 ```typescript
 const store = create(
   immer<State & StateActions>((set, get) => {
